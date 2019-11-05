@@ -14,7 +14,7 @@ student *create()
 	head = new student;
 	temp = head;
 	cin >> num;
-	while (num != -1) //-1标识结束，所以会有一个多余的链元素。算是单向链表的一个缺点吧。
+	while (num != -1) //-1标识结束，所以会有一个多余的链元素。专门用于标识结束。
 	{
 		n++;
 		temp->id = num;
