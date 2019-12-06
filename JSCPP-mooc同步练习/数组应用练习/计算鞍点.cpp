@@ -1,51 +1,45 @@
-#include <iostream>
-using namespace std;
+//升级版，改进了一些错误
+#include <stdio.h>
+#define LIMIT 6
 int main()
 {
-    int flag = 0;
-	int i = 0, j = 0;
-	int matrix[5][5];
-	for(i = 0; i < 5; i++)
-		for(j = 0; j < 5; j++)
-			cin>>matrix[i][j];
+	int n = 0;
+	scanf("%d",&n);
 	
-	const int *p_row_max = NULL;
-	const int *p_column_min = NULL;
-	int mark_row = 0;
-	int mark_column = 0;
-	for(i = 0; i < 5; i++)
+	int i = 0, j = 0, k = 0;  //计数变量
+	int num[LIMIT][LIMIT] = {0};
+	for(i = 0; i < n; i++)
+		for(j = 0; j < n; j++)
+			scanf("%d",&num[i][j]);
+	
+	int flag = 0;
+	int max_row = 0;
+	int min_col = 0;
+	for(i = 0; i < n; i++)
 	{
-		p_row_max = &matrix[i][0];  //指向每行第一列元素
-		mark_column = 0;   //记录为第一列
-		for(j = 0; j < 5; j++)
-			if(*p_row_max < matrix[i][j])
+		max_row = num[i][0];
+		for(j = 0; j < n; j++)
+			if(max_row < num[i][j])
+				max_row = num[i][j];
+
+		for(j = 0; j < n; j++) 
+			if(num[i][j] == max_row)
 			{
-				p_row_max = &matrix[i][j];  //找到、指向每行最大值
-                mark_column = j;  //记录该列	
-			}
-		
-		
-		p_column_min = &matrix[0][mark_column];  //指向记录列的第一行的元素
-        mark_row = 0;  //记录为第一行
-		for(int k = 0; k < 5; k++)  //从第一行开始
-		    if(*p_column_min > matrix[k][mark_column])
-			{
-				p_column_min = &matrix[k][mark_column];  //找到、指向每列最小值
-                mark_row = k;
-		    }
-		
-		if(p_row_max == p_column_min)//如果为同一元素，则是鞍点
-		{
-			cout<<++mark_row<<" "<<++mark_column<<" "<<*p_row_max;
-			flag = 1;
-		}
-        else 
-            continue;			
+				min_col = num[0][j];
+				for(k = 0; k < n; k++)
+					if(min_col > num[k][j])
+						min_col = num[k][j];
 				
+				for(k = 0; k < n; k++)
+					if(num[k][j] == min_col && k == i)  //找到鞍点
+					{
+						printf("%d %d",i,j);
+						flag = 1;
+					}
+			}
 	}
 	if(flag == 0)
-		cout<<"not found";
+		printf("NONE");
 	
 	return 0;
-	
 }

@@ -1,8 +1,9 @@
-//尽力了，做题网站满分10分给了7分，我做了好几天了
+//找到问题所在了，额，好后悔用指针来写啊~
+//现在完全正确了，AC
 #include <iostream>
 using namespace std;
 void num_fix(char *, char *);
-void find_mode(char (*)[60], int);
+void find_mode(char (*)[65], int);
 
 int main()
 {
@@ -15,18 +16,18 @@ int main()
 	cin.get();
 	
 	int count = 0;
-	char num[128][60] = {'\0'};
-	char num_temp[500] = {'\0'};
+	char num[135][65] = {'\0'};
+	char num_temp[300] = {'\0'};
 	while(1)
 	{
-		cin.getline(num_temp, 500,'\n');
+		cin.getline(num_temp, 300,'\n');
 		
 		if(num_temp[0] == '\0')  //判断该行是否为空行
 		    continue;
 		else
 		{
 			num_fix(&num_temp[0], &num[count++][0]);  //处理后填入正式数组
-			for(int i = 0; i < 500; i++)
+			for(int i = 0; i < 300; i++)
 				num_temp[i] = '\0';  //临时数组归零
 		}
 		
@@ -111,11 +112,11 @@ void num_fix(char *num_temp, char *num)
 		*/
 }
 
-void find_mode(char (*num)[60], int n)
+void find_mode(char (*num)[65], int n)
 {
 	char *p_now = &num[0][0];
 	char *p_next = &num[1][0];
-	char mode[60] = {'\0'};
+	char mode[65] = {'\0'};
 	int count_now = 1;
 	int count_max = 1;
 	
@@ -138,8 +139,14 @@ void find_mode(char (*num)[60], int n)
 				else
 				{p_now++; p_next++;}
 			
-			    if(*p_now == '\0' || *p_next == '\0')  //数到头
-                    break;					
+			    if( (*p_now == '\0' && *p_next != '\0') || (*p_now != '\0' && *p_next == '\0') )  //有数先行结束，两数不等长，不为同一个数
+				{
+					flag = 0;
+					break;
+				}
+			
+			    if(*p_now == '\0' && *p_next == '\0')  //两数等长，最后一位之前的数都相等
+                    break;					           //是为同一个数
 			}
 			
 			if(flag == 0) //不同数
