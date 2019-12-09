@@ -28,7 +28,6 @@ int main()
 			for(p_print = p_now + 1; (*p_print != ' ' && *p_print != '\0'); p_print++)
 				cout<<*p_print;
 		}
-		
 		//打印英文字母的部分
 		
 		if(*p_now != ' ' && *p_now != '\0' && flag == 0)
