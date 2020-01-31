@@ -24,7 +24,7 @@ void CreateList(SqList *&L, ElemType a[], int n)
 	L->length = n;
 }
 
-/* InitList:创建空线性表 */
+/* InitList:创建空顺序表 */
 void InitList(SqList *&L)
 {
 	L = (SqList*)malloc(sizeof(SqList));
