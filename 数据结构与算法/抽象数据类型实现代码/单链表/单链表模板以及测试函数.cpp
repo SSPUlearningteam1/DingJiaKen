@@ -284,7 +284,7 @@ int main()
 	CreateListR(L2,a,n);
 	printf("头插法:\n");
 	DispList(L1);
-	Printf("尾插法:\n");
+	printf("尾插法:\n");
 	DispList(L2);
 	
 	DestroyList(L1);
