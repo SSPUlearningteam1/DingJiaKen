@@ -175,5 +175,6 @@ int main()
     int C, R;
 	scanf("%d %d",&C, &R);
     if(!mgpath(1,1,C,R,mg))
-        printf("该迷宫问题没有解！");		
+        printf("该迷宫问题没有解！");	
+    return 0;	
 }
