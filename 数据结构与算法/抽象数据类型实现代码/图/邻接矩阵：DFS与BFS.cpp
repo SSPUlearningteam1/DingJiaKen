@@ -1,9 +1,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-/********************/
-/*邻接矩阵的简易构造*/
-/********************/
+/******************/
+/*邻接矩阵DFS和BFS*/
+/******************/
 
 #define MAX_VEX_NUM 10
 #define MAX_ARC_NUM MAX_VEX_NUM*MAX_VEX_NUM

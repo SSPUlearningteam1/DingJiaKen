@@ -1,14 +1,14 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-/****************/
-/*简易构造邻接表*/
-/****************/
+/******************/
+/*邻接表的简易构建*/
+/******************/
 
 /*注：使用下标位置0，不使用下标位置MAX_VEX_NUM-1*/
 
 #define MAX_VEX_NUM 10
-#define MAX_ARC_NUM 10
+#define MAX_ARC_NUM MAX_VEX_NUM*(MAX_VEX_NUM-1)
 typedef char VexType;
 typedef enum
 {

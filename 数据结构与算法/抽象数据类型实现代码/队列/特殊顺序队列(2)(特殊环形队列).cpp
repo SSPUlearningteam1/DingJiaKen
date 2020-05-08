@@ -10,7 +10,7 @@
  *代替队尾指针。            */
 /****************************/
 
-/*                   算法描述                        */
+/*                   算法描述                                  */
 /*
   已知front、rear，求队中元素个数count：
   count=(rear-front+MaxSize)%MaxSize
@@ -22,9 +22,9 @@
   若仅保留队头指针，有：
   队空条件：count＝0 
   队满条件：count＝MaxSize 
-  进队e操作：rear=(rear+1)%MaxSize; 将e放在rear处 
-  出队操作：front=(front+1)%MaxSize;  取出front处元素e; */
-/*                                                      */
+  进队e操作：rear=(rear+1)%MaxSize; 将e放在rear处; count++;
+  出队操作：front=(front+1)%MaxSize;  取出front处元素e; count--;*/
+/*                                                              */
 
 #define MaxSize 20
 typedef int ElemType;
