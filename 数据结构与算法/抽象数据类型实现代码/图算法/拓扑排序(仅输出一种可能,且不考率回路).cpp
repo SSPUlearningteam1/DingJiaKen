@@ -1,11 +1,12 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-/**********/
-/*拓扑排序*/
-/**********/
+/***************************************/
+/*拓扑排序(仅输出一种可能,且不考率回路)*/
+/***************************************/
 
 /*注：使用下标位置0，不使用下标位置MAX_VEX_NUM-1*/
+/*注：本算法对于邻接表的构建和基本操作有所修改*/
 
 #define MAX_VEX_NUM 10
 #define MAX_ARC_NUM 10
@@ -34,7 +35,6 @@ typedef struct
 	VexNode adjlist[MAX_VEX_NUM];  //邻接表
 	int vexnum, arcnum;            //定点数与边数
 	GraphType type;                //邻接表类型。对特定构造的邻接表没有意义。
-	
 }ALGraph;
 
 //顶点集合和边集合类型
